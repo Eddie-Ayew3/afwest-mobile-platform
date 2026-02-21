@@ -1,15 +1,15 @@
 class LoginRequest {
-  final String email;
+  final String staffId;
   final String password;
 
   LoginRequest({
-    required this.email,
+    required this.staffId,
     required this.password,
   });
 
   Map<String, dynamic> toJson() {
     return {
-      'email': email,
+      'staff_id': staffId,
       'password': password,
     };
   }
@@ -35,13 +35,13 @@ class LoginResponse {
 class User {
   final int id;
   final String name;
-  final String email;
+  final String staffId;
   final String? phone;
 
   User({
     required this.id,
     required this.name,
-    required this.email,
+    required this.staffId,
     this.phone,
   });
 
@@ -49,7 +49,7 @@ class User {
     return User(
       id: json['id'] ?? 0,
       name: json['name'] ?? '',
-      email: json['email'] ?? '',
+      staffId: json['staff_id'] ?? '',
       phone: json['phone'],
     );
   }
@@ -58,7 +58,7 @@ class User {
     return {
       'id': id,
       'name': name,
-      'email': email,
+      'staff_id': staffId,
       'phone': phone,
     };
   }

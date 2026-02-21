@@ -15,23 +15,23 @@ class LoginScreen extends ConsumerStatefulWidget {
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _staffIdController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscurePassword = true;
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _staffIdController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
   void _handleLogin() async {
     if (_formKey.currentState!.validate()) {
-      final email = _emailController.text.trim();
+      final staffId = _staffIdController.text.trim();
       final password = _passwordController.text;
       
-      await ref.read(authNotifierProvider.notifier).login(email, password);
+      await ref.read(authNotifierProvider.notifier).login(staffId, password);
     }
   }
 
@@ -106,20 +106,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    // Email Field
+                    // Staff ID Field
                     TextFormField(
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
+                      controller: _staffIdController,
+                      keyboardType: TextInputType.text,
                       decoration: const InputDecoration(
-                        labelText: AppStrings.email,
-                        prefixIcon: Icon(Icons.email),
+                        labelText: AppStrings.staffId,
+                        prefixIcon: Icon(Icons.badge),
                       ),
                       validator: (value) {
                         if (AppUtils.isEmpty(value)) {
-                          return AppStrings.emailRequired;
+                          return AppStrings.staffIdRequired;
                         }
-                        if (!AppUtils.isValidEmail(value!)) {
-                          return AppStrings.invalidEmail;
+                        if (value!.length < 3) {
+                          return AppStrings.invalidStaffId;
                         }
                         return null;
                       },

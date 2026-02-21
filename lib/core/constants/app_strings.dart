@@ -1,12 +1,12 @@
 class AppStrings {
   // Login Screen
   static const String login = 'Login';
-  static const String email = 'Email';
+  static const String staffId = 'Staff ID';
   static const String password = 'Password';
   static const String loginButton = 'Sign In';
-  static const String emailRequired = 'Email is required';
+  static const String staffIdRequired = 'Staff ID is required';
   static const String passwordRequired = 'Password is required';
-  static const String invalidEmail = 'Please enter a valid email';
+  static const String invalidStaffId = 'Please enter a valid Staff ID';
   static const String loginError = 'Login failed. Please check your credentials.';
   
   // Dashboard
